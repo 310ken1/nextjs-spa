@@ -1,0 +1,39 @@
+{
+  // Dev Containerの名称設定
+  "name": "Next.js SSG",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "MS-CEINTL.vscode-language-pack-ja",
+        "PKief.material-icon-theme",
+        "streetsidesoftware.code-spell-checker",
+        "alefragnani.Bookmarks",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.vscodeintellicode-completions",
+        "uctakeoff.vscode-counter",
+        "usernamehw.errorlens",
+        "amazonwebservices.aws-toolkit-vscode",
+        "shd101wyy.markdown-preview-enhanced",
+        "DavidAnson.vscode-markdownlint",
+        "TakumiI.markdowntable",
+        "mushan.vscode-paste-image",
+        "humao.rest-client",
+        "hediet.vscode-drawio",
+        "42Crunch.vscode-openapi"
+      ],
+      "settings": {
+        // 自動保存
+        "files.autoSave": "afterDelay",
+        // Markdown Preview Enhanced設定
+        "markdown-preview-enhanced.plantumlJarPath": "/usr/local/bin/plantuml.jar",
+        // OpenAPI Editor設定
+        "openapi.defaultPreviewRenderer": "redoc"
+      }
+    }
+  },
+  // コンテナ内の実行ユーザー設定
+  "remoteUser": "vscode"
+}

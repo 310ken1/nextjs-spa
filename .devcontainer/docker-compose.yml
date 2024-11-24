@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        user: ${COMPOSE_ENV_USER_DIR}
+    volumes:
+      - ../..:/workspaces:cached
+      - ${USERPROFILE}/.aws:/home/${COMPOSE_ENV_USER_DIR}/.aws:ro
+    command: [ "sleep", "infinity" ] # コンテナを起動したままにする
+
