@@ -45,7 +45,7 @@
           "*.ts": "typescriptreact",
           "*.tsx": "typescriptreact"
         },
-        "typescript.tsdk": "/home/vscode/node_modules/typescript/lib",
+        "typescript.tsdk": "node_modules/typescript/lib",
         // Markdown Preview Enhanced設定
         "markdown-preview-enhanced.plantumlJarPath": "/usr/local/bin/plantuml.jar",
         // OpenAPI Editor設定
