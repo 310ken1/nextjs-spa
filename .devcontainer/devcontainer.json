@@ -2,6 +2,11 @@
   // Dev Containerの名称設定
   "name": "Next.js SSG",
   "dockerComposeFile": "docker-compose.yml",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    }
+  },
   "service": "app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "customizations": {
@@ -22,11 +27,25 @@
         "mushan.vscode-paste-image",
         "humao.rest-client",
         "hediet.vscode-drawio",
-        "42Crunch.vscode-openapi"
+        "42Crunch.vscode-openapi",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
       ],
       "settings": {
         // 自動保存
         "files.autoSave": "afterDelay",
+        // フォーマッタ設定
+        "editor.formatOnSave": true,
+        "eslint.format.enable": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "files.associations": {
+          "*.js": "javascriptreact",
+          "*.jsx": "javascriptreact",
+          "*.ts": "typescriptreact",
+          "*.tsx": "typescriptreact"
+        },
+        "typescript.tsdk": "/home/vscode/node_modules/typescript/lib",
         // Markdown Preview Enhanced設定
         "markdown-preview-enhanced.plantumlJarPath": "/usr/local/bin/plantuml.jar",
         // OpenAPI Editor設定
@@ -34,6 +53,7 @@
       }
     }
   },
+  "postCreateCommand": "cp -r /home/vscode/node_modules .",
   // コンテナ内の実行ユーザー設定
   "remoteUser": "vscode"
 }
