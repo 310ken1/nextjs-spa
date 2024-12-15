@@ -1,0 +1,11 @@
+.navigation {
+  height: 100%;
+  background-color: #3500f344;
+}
+
+.button_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}

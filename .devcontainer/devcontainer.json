@@ -34,7 +34,7 @@
       ],
       "settings": {
         // 自動保存
-        "files.autoSave": "afterDelay",
+        "files.autoSave": "off",
         // フォーマッタ設定
         "editor.formatOnSave": true,
         "eslint.format.enable": true,
