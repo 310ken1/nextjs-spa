@@ -3,14 +3,14 @@ import "./globals.css";
 import { ReactNode } from "react";
 
 export default function RootLayout({
+  children,
   header,
   navigation,
-  main,
   footer,
 }: {
+  children: ReactNode;
   header: ReactNode;
   navigation: ReactNode;
-  main: React.ReactNode;
   footer: ReactNode;
 }) {
   return (
@@ -19,7 +19,7 @@ export default function RootLayout({
         <header>{header}</header>
         <div className="content">
           <aside className="navigation">{navigation}</aside>
-          <main>{main}</main>
+          <main>{children}</main>
         </div>
         <footer>{footer}</footer>
       </body>
