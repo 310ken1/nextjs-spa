@@ -5,11 +5,11 @@ import styles from "./navigation.module.css";
 import { Button } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 
-export default function DefaultNavigation() {
+export default function TopNavigation() {
   const router = useRouter();
   return (
     <div className={styles.navigation}>
-      Default
+      Top
       <div className={styles.top_area}>
         <Button
           className={`bi bi-house ${styles.button}`}

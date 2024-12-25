@@ -1,11 +1,10 @@
-import styles from "./main.module.css";
+import styles from "./top.module.css";
 import Link from "next/link";
 
-export default function Main() {
+export default function TopPage() {
   return (
     <div className={styles.main}>
-      メインコンテンツ
-      <p>ここにメインの内容が表示されます。</p>
+      <p>Top</p>
       <Link href="/page1">Page1</Link>
     </div>
   );
