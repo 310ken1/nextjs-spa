@@ -21,6 +21,11 @@ export default function TopNavigation() {
           variant="light"
           onClick={() => window.location.reload()}
         ></Button>
+        <Button
+          className={`bi bi-brightness-low-fill ${styles.button}`}
+          variant="light"
+          onClick={() => router.push("/open_meteo")}
+        ></Button>
       </div>
       <div className={styles.bottom_area}>
         <Button
