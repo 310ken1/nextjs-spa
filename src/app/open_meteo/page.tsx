@@ -5,30 +5,6 @@ import { useWeatherData } from "@/lib/open_meteo_hooks";
 import React from "react";
 import { Table } from "react-bootstrap";
 
-type HourlyData = {
-  hourly: {
-    time: string[];
-    temperature_2m: number[];
-  };
-};
-
-const generateTimeTemperaturePairs = (data: HourlyData): [string, number][] => {
-  if (data?.hourly == null) return [];
-
-  const { time, temperature_2m } = data.hourly;
-
-  // 配列の長さを比較し、短い方に合わせる
-  const minLength = Math.min(time.length, temperature_2m.length);
-
-  // 同じインデックスのペアを生成
-  const pairs: [string, number][] = [];
-  for (let i = 0; i < minLength; i++) {
-    pairs.push([time[i], temperature_2m[i]]);
-  }
-
-  return pairs;
-};
-
 function TableRow({
   index,
   data,
@@ -53,8 +29,6 @@ export default function WeatherPage() {
   startDate.setFullYear(endDate.getFullYear() - 5);
   const { data } = useWeatherData(35.6895, 139.6917, startDate, endDate);
 
-  const pairs = generateTimeTemperaturePairs(data);
-
   return (
     <>
       Weather Data
@@ -68,8 +42,8 @@ export default function WeatherPage() {
             </tr>
           </thead>
           <tbody>
-            {pairs.map((data, index) => (
-              <MemoTableRow key={index} index={index} data={data} />
+            {data?.map((d, index) => (
+              <MemoTableRow key={index} index={index} data={d} />
             ))}
           </tbody>
         </Table>
