@@ -26,12 +26,12 @@ export default function WeatherPage() {
   const endDate = new Date();
   endDate.setDate(endDate.getDate());
   const startDate = new Date();
-  startDate.setFullYear(endDate.getFullYear() - 5);
+  startDate.setFullYear(endDate.getFullYear() - 1);
   const { data } = useWeatherData(35.6895, 139.6917, startDate, endDate);
 
   return (
     <>
-      Weather Data
+      気温履歴
       <div className={styles.table_wrap}>
         <Table className={styles.table} striped bordered hover>
           <thead>
