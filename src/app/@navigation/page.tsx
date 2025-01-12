@@ -26,6 +26,11 @@ export default function TopNavigation() {
           variant="light"
           onClick={() => router.push("/open_meteo")}
         ></Button>
+        <Button
+          className={`bi bi-arrow-down-up ${styles.button}`}
+          variant="light"
+          onClick={() => router.push("/virtual_scroll")}
+        ></Button>
       </div>
       <div className={styles.bottom_area}>
         <Button
