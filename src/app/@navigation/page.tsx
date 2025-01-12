@@ -31,6 +31,11 @@ export default function TopNavigation() {
           variant="light"
           onClick={() => router.push("/virtual_scroll")}
         ></Button>
+        <Button
+          className={`bi bi-back ${styles.button}`}
+          variant="light"
+          onClick={() => router.push("/konva")}
+        ></Button>
       </div>
       <div className={styles.bottom_area}>
         <Button
