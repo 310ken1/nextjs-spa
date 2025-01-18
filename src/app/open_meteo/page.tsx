@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./open_meteo.module.css";
-import { useWeatherData } from "@/lib/open_meteo_hooks";
+import { TemperatureHistory, useWeatherData } from "@/lib/open_meteo_hooks";
 import React from "react";
 import { Table } from "react-bootstrap";
 
@@ -10,13 +10,13 @@ function TableRow({
   data,
 }: Readonly<{
   index: number;
-  data: [string, number];
+  data: TemperatureHistory;
 }>): JSX.Element {
   return (
     <tr key={index}>
       <td>{index}</td>
-      <td>{data[0]}</td>
-      <td>{data[1]}</td>
+      <td>{data.time}</td>
+      <td>{data.temperature}</td>
     </tr>
   );
 }

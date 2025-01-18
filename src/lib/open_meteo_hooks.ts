@@ -1,11 +1,46 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchWeatherData } from "./open_meteo_api";
+
+export type TemperatureHistory = {
+  time: string;
+  temperature: number;
+};
 
 type HourlyData = {
   hourly: {
     time: string[];
     temperature_2m: number[];
   };
+};
+
+const OPEN_METEO_API_URL = "https://archive-api.open-meteo.com/v1/era5?";
+
+const fetchWeatherData = async (
+  latitude: number,
+  longitude: number,
+  startDate: string,
+  endDate: string
+) => {
+  const url = new URL(OPEN_METEO_API_URL);
+  url.searchParams.append("latitude", String(latitude));
+  url.searchParams.append("longitude", String(longitude));
+  url.searchParams.append("start_date", startDate);
+  url.searchParams.append("end_date", endDate);
+  url.searchParams.append("hourly", "temperature_2m");
+
+  try {
+    const response = await fetch(url.toString());
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error ${response.status}: ${errorText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+    throw error;
+  }
 };
 
 export const useWeatherData = (
@@ -19,15 +54,15 @@ export const useWeatherData = (
   return useQuery({
     queryKey: ["weather", latitude, longitude, start, end],
     queryFn: () => fetchWeatherData(latitude, longitude, start, end),
-    select: (data: HourlyData): [string, number][] => {
+    select: (data: HourlyData): TemperatureHistory[] => {
       if (data?.hourly == null) return [];
       const { time, temperature_2m } = data.hourly;
       const minLength = Math.min(time.length, temperature_2m.length);
-      const pairs: [string, number][] = [];
+      const history: TemperatureHistory[] = [];
       for (let i = 0; i < minLength; i++) {
-        pairs.push([time[i], temperature_2m[i]]);
+        history.push({ time: time[i], temperature: temperature_2m[i] });
       }
-      return pairs;
+      return history;
     },
     staleTime: Infinity,
   });
