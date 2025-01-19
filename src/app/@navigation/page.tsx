@@ -4,8 +4,11 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import styles from "./navigation.module.css";
 import { Button } from "react-bootstrap";
 import { useRouter } from "next/navigation";
+import { EVENT_ID, event_state } from "@/state/event";
+import { useAtom } from "jotai";
 
 export default function TopNavigation() {
+  const [, setEvent] = useAtom(event_state);
   const router = useRouter();
   return (
     <div className={styles.navigation}>
@@ -14,12 +17,16 @@ export default function TopNavigation() {
         <Button
           className={`bi bi-house ${styles.button}`}
           variant="light"
-          onClick={() => router.push("/")}
+          onClick={() =>
+            setEvent({ id: EVENT_ID.home, param: { name: "ホーム" } })
+          }
         ></Button>
         <Button
           className={`bi bi-arrow-clockwise ${styles.button}`}
           variant="light"
-          onClick={() => window.location.reload()}
+          onClick={() =>
+            setEvent({ id: EVENT_ID.reload, param: { name: "リロード" } })
+          }
         ></Button>
         <Button
           className={`bi bi-brightness-low-fill ${styles.button}`}
