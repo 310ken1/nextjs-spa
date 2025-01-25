@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Page1() {
   return (
     <div className={styles.main}>
-      <p>Page1</p>
+      <p>ページ１画面</p>
       <Link href="/">Top</Link>
       <p>↑ヘッダがデフォルトヘッダに戻らない</p>
     </div>

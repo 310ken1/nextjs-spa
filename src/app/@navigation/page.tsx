@@ -18,14 +18,17 @@ export default function TopNavigation() {
           className={`bi bi-house ${styles.button}`}
           variant="light"
           onClick={() =>
-            setEvent({ id: EVENT_ID.home, param: { name: "ホーム" } })
+            setEvent({ id: EVENT_ID.home, param: { name: "トップ：ホーム" } })
           }
         ></Button>
         <Button
           className={`bi bi-arrow-clockwise ${styles.button}`}
           variant="light"
           onClick={() =>
-            setEvent({ id: EVENT_ID.reload, param: { name: "リロード" } })
+            setEvent({
+              id: EVENT_ID.reload,
+              param: { name: "トップ：リロード" },
+            })
           }
         ></Button>
         <Button
