@@ -1,0 +1,50 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: azure;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.table_parent {
+  overflow: auto;
+  position: relative;
+}
+
+.table {
+  display: grid;
+}
+
+.thead {
+  display: grid;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.thead_tr {
+  display: flex;
+  background-color: #0c68d0;
+}
+
+.thead_th {
+  display: flex;
+  border: 1px solid black;
+}
+
+.tbody {
+  display: grid;
+  position: relative;
+}
+
+.tbody_tr {
+  display: flex;
+  position: absolute;
+  width: 100%;
+}
+
+.tbody_td {
+  display: flex;
+  border: 1px solid black;
+}

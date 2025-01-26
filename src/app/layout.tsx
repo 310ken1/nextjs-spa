@@ -19,7 +19,7 @@ export default function RootLayout({
   header: ReactNode;
   navigation: ReactNode;
   footer: ReactNode;
-}) {
+}): JSX.Element {
   return (
     <html lang="ja">
       <body>

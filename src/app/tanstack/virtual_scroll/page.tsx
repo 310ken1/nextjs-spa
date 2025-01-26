@@ -1,6 +1,7 @@
 "use client";
 
-import { TemperatureHistory, useWeatherData } from "@/lib/open_meteo_hooks";
+import styles from "./virtual_scroll.module.css";
+import { TemperatureHistory, useWeatherData } from "@/hooks/open_meteo_hooks";
 import React from "react";
 import {
   ColumnDef,
@@ -56,39 +57,20 @@ export default function WeatherPage() {
     overscan: 5,
   });
   return (
-    <>
+    <div className={styles.main}>
       仮想スクロール
-      <div
-        ref={parentRef}
-        style={{
-          overflow: "auto",
-          position: "relative",
-          height: "100%",
-        }}
-      >
-        <table style={{ display: "grid" }}>
-          <thead
-            style={{
-              display: "grid",
-              position: "sticky",
-              top: 0,
-              zIndex: 1,
-              backgroundColor: "white",
-            }}
-          >
+      <div ref={parentRef} className={styles.table_parent}>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr
-                key={headerGroup.id}
-                style={{ display: "flex", width: "100%" }}
-              >
+              <tr key={headerGroup.id} className={styles.thead_tr}>
                 {headerGroup.headers.map((header) => {
                   return (
                     <th
                       key={header.id}
+                      className={styles.thead_th}
                       style={{
-                        display: "flex",
                         width: header.getSize(),
-                        border: "1px solid black",
                       }}
                     >
                       <div
@@ -115,10 +97,9 @@ export default function WeatherPage() {
             ))}
           </thead>
           <tbody
+            className={styles.tbody}
             style={{
-              display: "grid",
-              height: `${rowVirtualizer.getTotalSize()}px`, //tells scrollbar how big the table is
-              position: "relative", //needed for absolute positioning of rows
+              height: `${rowVirtualizer.getTotalSize()}px`,
             }}
           >
             {rowVirtualizer.getVirtualItems().map((virtualRow) => {
@@ -128,21 +109,18 @@ export default function WeatherPage() {
                   data-index={virtualRow.index}
                   ref={(node) => rowVirtualizer.measureElement(node)}
                   key={row.id}
+                  className={styles.tbody_tr}
                   style={{
-                    display: "flex",
-                    position: "absolute",
                     transform: `translateY(${virtualRow.start}px)`,
-                    width: "100%",
                   }}
                 >
                   {row.getVisibleCells().map((cell) => {
                     return (
                       <td
                         key={cell.id}
+                        className={styles.tbody_td}
                         style={{
-                          display: "flex",
                           width: cell.column.getSize(),
-                          border: "1px solid black",
                         }}
                       >
                         {flexRender(
@@ -158,6 +136,6 @@ export default function WeatherPage() {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }

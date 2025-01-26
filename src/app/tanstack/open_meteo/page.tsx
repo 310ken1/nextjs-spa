@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./open_meteo.module.css";
-import { TemperatureHistory, useWeatherData } from "@/lib/open_meteo_hooks";
+import { TemperatureHistory, useWeatherData } from "@/hooks/open_meteo_hooks";
 import React from "react";
 import { Table } from "react-bootstrap";
 
@@ -30,7 +30,7 @@ export default function WeatherPage() {
   const { data } = useWeatherData(35.6895, 139.6917, startDate, endDate);
 
   return (
-    <>
+    <div className={styles.main}>
       気温履歴
       <div className={styles.table_wrap}>
         <Table className={styles.table} striped bordered hover>
@@ -48,6 +48,6 @@ export default function WeatherPage() {
           </tbody>
         </Table>
       </div>
-    </>
+    </div>
   );
 }

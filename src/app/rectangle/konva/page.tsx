@@ -4,7 +4,7 @@ import { KonvaEventObject, Node, NodeConfig } from "konva/lib/Node";
 import { useState } from "react";
 import { Stage, Layer, Rect } from "react-konva";
 
-export default function Page1() {
+export default function KonvaPage() {
   const [message, setMessage] = useState("-");
   const [rectangles, setRectangles] = useState([
     { id: 1, x: 50, y: 60, width: 100, height: 80, fill: "red" },
