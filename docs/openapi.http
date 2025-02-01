@@ -1,0 +1,49 @@
+# REST Clientマニュアル
+# https://github.com/Huachao/vscode-restclient
+#
+
+@hostname = 127.0.0.1
+@port = 4010
+@host = {{hostname}}:{{port}}
+
+
+### ユーザー情報リストの取得
+GET http://{{host}}/users
+
+#### ユーザー情報リストの取得（単数ユーザー取得）
+GET http://{{host}}/users
+Prefer: example=singleCase
+
+#### ユーザー情報リストの取得（単数ユーザー取得）
+GET http://{{host}}/users
+Prefer: example=multiCase
+
+#### ユーザー情報リストの取得（StatusCode:401）
+GET http://{{host}}/users
+Prefer: code=401
+
+### ユーザーの作成
+POST http://{{host}}/users
+Content-Type: application/json
+
+{
+    "id": 0,
+    "name": "string",
+    "email": "user@example.com"
+}
+
+### ユーザー情報の取得
+GET http://{{host}}/users/1
+
+### ユーザー情報の更新
+PUT http://{{host}}/users/1
+Content-Type: application/json
+
+{
+    "id": 0,
+    "name": "string",
+    "email": "user@example.com"
+}
+
+### ヘルスチェック
+GET http://{{host}}/health

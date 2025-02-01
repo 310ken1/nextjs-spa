@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "npx prism mock docs/openapi.yml"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.62.7",
@@ -25,6 +26,7 @@
     "react-konva": "^18.2.10"
   },
   "devDependencies": {
+    "@stoplight/prism-cli": "^5.12.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
