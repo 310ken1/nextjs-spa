@@ -28,7 +28,7 @@ export default function RootLayout({
             <header>{header}</header>
             <main>
               <section className={styles.navigation}>{navigation}</section>
-              <section className={styles.main_content}>{children}</section>
+              <section className={styles.children}>{children}</section>
             </main>
             <footer>{footer}</footer>
           </QueryClientProvider>

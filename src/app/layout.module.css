@@ -3,7 +3,7 @@
   height: 100%;
 }
 
-.main_content {
+.children {
   flex: 1;
   height: 100%;
   overflow: clip;
