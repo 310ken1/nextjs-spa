@@ -1,7 +1,10 @@
 "use client";
 
 import styles from "./open_meteo.module.css";
-import { TemperatureHistory, useWeatherData } from "@/hooks/open_meteo_hooks";
+import {
+  TemperatureHistory,
+  useWeatherHistory,
+} from "@/hooks/useWeatherHistory";
 import React from "react";
 import { Table } from "react-bootstrap";
 
@@ -27,7 +30,7 @@ export default function WeatherPage() {
   endDate.setDate(endDate.getDate());
   const startDate = new Date();
   startDate.setFullYear(endDate.getFullYear() - 1);
-  const { data } = useWeatherData(35.6895, 139.6917, startDate, endDate);
+  const { data } = useWeatherHistory(35.6895, 139.6917, startDate, endDate);
 
   return (
     <div className={styles.main}>

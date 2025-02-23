@@ -43,7 +43,7 @@ const fetchWeatherData = async (
   }
 };
 
-export const useWeatherData = (
+export const useWeatherHistory = (
   latitude: number,
   longitude: number,
   startDate: Date,

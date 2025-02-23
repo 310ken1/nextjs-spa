@@ -1,7 +1,10 @@
 "use client";
 
 import styles from "./virtual_scroll.module.css";
-import { TemperatureHistory, useWeatherData } from "@/hooks/open_meteo_hooks";
+import {
+  TemperatureHistory,
+  useWeatherHistory,
+} from "@/hooks/useWeatherHistory";
 import React from "react";
 import {
   ColumnDef,
@@ -19,7 +22,7 @@ export default function WeatherPage() {
   endDate.setDate(endDate.getDate());
   const startDate = new Date();
   startDate.setFullYear(endDate.getFullYear() - 1);
-  let { data } = useWeatherData(35.6895, 139.6917, startDate, endDate);
+  let { data } = useWeatherHistory(35.6895, 139.6917, startDate, endDate);
 
   const columns = React.useMemo<ColumnDef<TemperatureHistory>[]>(
     () => [
